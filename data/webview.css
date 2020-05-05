@@ -1,0 +1,18 @@
+@media screen and (prefers-color-scheme: dark) {
+	html, img {
+		filter: invert() hue-rotate(180deg);
+	}
+}
+
+body {
+	padding: 2em !important;
+	margin: 0 !important;
+}
+
+
+
+/* == Wikitionary == */
+
+.mw-jump-link, .printfooter, #footer, .toc, #firstHeading, .disambig-see-also-2, .disambig-see-also {
+	display: none !important;
+}

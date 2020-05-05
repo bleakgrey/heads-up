@@ -1,0 +1,12 @@
+headerbar {
+	border-bottom: none;
+	box-shadow: none;
+}
+
+window, headerbar {
+	background: white;
+}
+
+window.dark, window.dark headerbar {
+	background: black;
+}

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Define Selection
+Comment=Define currently selected text in any window
+GenericName=Define Selection
+Exec=@EXEC_NAME@ %U
+TryExec=@EXEC_NAME@
+Icon=edit-find-symbolic
+Terminal=false
+Categories=Utility;GTK;Development;Office;
+Keywords=Define;Selection;Selected;Text;Highlighted;Word;

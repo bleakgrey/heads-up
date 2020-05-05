@@ -1,0 +1,50 @@
+# English translations for com.github.bleakgrey.headsup package.
+# Copyright (C) 2020 THE com.github.bleakgrey.headsup'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.bleakgrey.headsup package.
+# Automatically generated, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.bleakgrey.headsup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-05 14:00+0300\n"
+"PO-Revision-Date: 2020-05-04 13:25+0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/launcher.desktop.in:4 data/launcher.desktop.in:6
+msgid "Define Selection"
+msgstr "Define Selection"
+
+#: data/launcher.desktop.in:5
+msgid "Define currently selected text in any window"
+msgstr "Define currently selected text in any window"
+
+#: data/launcher.desktop.in:9
+msgid "edit-find-symbolic"
+msgstr "edit-find-symbolic"
+
+#: data/launcher.desktop.in:12
+msgid "Define;Selection;Selected;Text;Highlighted;Word;"
+msgstr "Define;Selection;Selected;Text;Highlighted;Word;"
+
+#: data/com.example.appdata.xml.in:45
+msgid "{{name}}"
+msgstr "{{name}}"
+
+#: src/Window.vala:71
+msgid "No text selected"
+msgstr "No text selected"
+
+#: src/Window.vala:72
+msgid "Select something in any window to search for its definition"
+msgstr "Select something in any window to search for its definition"
+
+#: src/Window.vala:78
+msgid "provided by Wikitionary (CC BY-SA 3.0)"
+msgstr "provided by Wikitionary (CC BY-SA 3.0)"

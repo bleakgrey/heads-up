@@ -1,0 +1,4 @@
+data/launcher.desktop.in
+data/com.example.appdata.xml.in
+src/Window.vala
+src/WebView.vala
