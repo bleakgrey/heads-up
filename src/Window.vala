@@ -47,35 +47,35 @@ public class HeadsUp.Window : Gtk.Window {
 		lang_settings = new GLib.Settings ("org.gnome.desktop.input-sources");
 		lang_settings.changed["current"].connect (() => on_lang_changed ());
 		lang_settings.changed["mru-sources"].connect (() => on_lang_changed ());
-
-		// webview = new WebView ();
-		// webview.on_ready.connect (() => {
-		// 	state.visible_child = content;
-		// });
-		// content.add (webview);
 	}
 
-	public void empty_state () {
-		stateful.set_status (_("No text selected"),
-							 _("Select something in any window to search for its definition"),
-							 "edit-find-symbolic");
+	public void no_selection () {
 		header.title = "";
 		header.subtitle = "";
 		switcher.reveal = false;
+		stateful.show_status (_("No Selection"),
+							 _("Select something in any window to search for its definition"),
+							 "edit-find-symbolic");
+	}
+
+	public void no_sources () {
+		header.title = "";
+		header.subtitle = "";
+		switcher.reveal = false;
+		stateful.show_status (_("No Sources"),
+							 _("You don't have any lookup sources available"),
+							 "edit-find-symbolic");
 	}
 
 	public void look_up (string q) {
 		query = q;
 		header.title = @"\"$query\"";
-		//header.subtitle = _("provided by Wikitionary (CC BY-SA 3.0)");
 		switcher.reveal = true;
+		stateful.show_content ();
 		on_lang_changed ();
-	}
 
-	// void reload_webview () {
-	// 	state.visible_child = loading;
-	// 	webview.load_uri (@"https://$lang.wiktionary.org/w/index.php?printable=yes&redirects=1&title=$query");
-	// }
+		Source.registry.@foreach (s => s.on_lookup (q));
+	}
 
 	void on_theme_changed () {
 		var theme = settings.gtk_theme_name;

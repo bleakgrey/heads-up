@@ -32,7 +32,9 @@ sources = [
 	'src/Widgets/WebView.vala',
 	'src/Selection.vala',
 	'src/Source.vala',
+	'src/WebViewSource.vala',
 	'src/Sources/Wikitionary.vala',
+	'src/Sources/Wordnik.vala',
 ]
 
 subdir('data')

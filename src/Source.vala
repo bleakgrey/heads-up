@@ -8,32 +8,30 @@ public class HeadsUp.Source : GLib.Object {
 	public string title { get; construct set; }
 	public string icon { get; construct set; }
 	public Widget content {get; construct set; default = null; }
+	public string query { get; set; }
 
-	public Source () {
-
-	}
-
-	public virtual void on_selected () {
-		if (content == null) {
-			warning (@"$title has no content widget!");
-			return;
-		}
-
-
-	}
+	protected Widgets.Stateful stateful;
 
 	public virtual void on_registered (Stack stack) {
-		var custom_content = new Box (Orientation.VERTICAL, 0);
-		stack.add_titled (custom_content, title, title);
-		stack.child_set_property (custom_content, "icon-name", icon);
-		custom_content.show ();
+		stateful = new Widgets.Stateful ();
+
+		if (content == null)
+			warning (@"Source $title has no content widget!");
+		else
+			stateful.content.pack_start (content, true, true);
+
+		stack.add_titled (stateful, title, title);
+		stack.child_set_property (stateful, "icon-name", icon);
 	}
 
-
+	public virtual bool on_lookup (string q) {
+		stateful.show_status (_("Nothing Here"), _("Definition unavailable"));
+		return true;
+	}
 
 	/* Static Registry */
 
-	protected static ArrayList<Source> registry = new ArrayList<Source> ();
+	public static ArrayList<Source> registry = new ArrayList<Source> ();
 
 	public static void register (Source source) {
 		info (@"Adding new source: $(source.title)");

@@ -21,15 +21,17 @@ namespace HeadsUp {
 				add_window (window);
 			}
 			window.present ();
-
-			Source.register (new Sources.Wikitionary ());
+			register_sources ();
 
 			var query = Selection.grab ();
 			query = "heads-up";
-			if (query != "")
+
+			if (Source.registry.size < 1)
+				window.no_sources ();
+			else if (query != "")
 				window.look_up (query);
 			else
-				window.empty_state ();
+				window.no_selection ();
 		}
 
 		public static int main (string[] args) {
@@ -42,6 +44,11 @@ namespace HeadsUp {
 	static string read_resource (string name) throws Error {
 		var res = GLib.resources_lookup_data (@"/$name", ResourceLookupFlags.NONE);
 		return (string) res.get_data ();
+	}
+
+	void register_sources () {
+		Source.register (new Sources.Wikitionary ());
+		Source.register (new Sources.Wordnik ());
 	}
 
 }

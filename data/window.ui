@@ -17,8 +17,8 @@
     </child>
     <child>
       <object class="GtkBox">
-        <property name="width_request">600</property>
-        <property name="height_request">400</property>
+        <property name="width_request">800</property>
+        <property name="height_request">500</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
@@ -36,7 +36,7 @@
           <object class="HdyViewSwitcherBar" id="switcher">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="stack">stateful</property>
+            <property name="policy">auto</property>
             <property name="reveal">True</property>
           </object>
           <packing>

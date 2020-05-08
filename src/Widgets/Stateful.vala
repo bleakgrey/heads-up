@@ -15,11 +15,15 @@ public class HeadsUp.Widgets.Stateful : Stack {
 	[GtkChild]
 	public Box content;
 
-	public Stateful () {
-
+	public void show_loading () {
+		visible_child_name = "loading";
 	}
 
-	public void set_status (string label, string desc, string icon = "dialog-warning-symbolic") {
+	public void show_content () {
+		visible_child = content;
+	}
+
+	public void show_status (string label, string desc, string icon = "dialog-warning-symbolic") {
 		status_image.icon_name = icon;
 		status_label.label = @"<span size=\"xx-large\">$label</span>";
 		status_desc.label = desc;
