@@ -12,29 +12,28 @@ config.set('VERSION', meson.project_version())
 config.set('PREFIX', get_option('prefix'))
 
 add_global_arguments([
-        '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
+        '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+        '-DHANDY_USE_UNSTABLE_API',
     ],
     language: 'c',
 )
 
+config_class = configure_file(
+	input: 'src/Config.vala',
+	output: 'Config.vala',
+	configuration: config
+)
+
 sources = [
-	'Config.vala',
-	'Application.vala',
-	'Window.vala',
-	'WebView.vala',
-	'Selection.vala',
+	config_class,
+	'src/Application.vala',
+	'src/Window.vala',
+	'src/Widgets/Stateful.vala',
+	'src/Widgets/WebView.vala',
+	'src/Selection.vala',
+	'src/Source.vala',
+	'src/Sources/Wikitionary.vala',
 ]
-
-configured_sources = []
-
-foreach i : sources
-	file = configure_file(
-		input: 'src/' + i,
-		output: i,
-		configuration: config
-	)
-	configured_sources += file
-endforeach
 
 subdir('data')
 subdir('po')
@@ -42,10 +41,12 @@ subdir('po')
 executable(
     meson.project_name(),
     asresources,
-    configured_sources,
+    sources,
     dependencies: [
         dependency('gtk+-3.0', version: '>=3.22.0'),
+        dependency('gee-0.8'),
         dependency('webkit2gtk-4.0'),
+        dependency('libhandy-0.0'),
     ],
     install: true,
 )

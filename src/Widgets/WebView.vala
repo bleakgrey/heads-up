@@ -1,6 +1,6 @@
 using WebKit;
 
-public class HeadsUp.WebView : WebKit.WebView {
+public class HeadsUp.Widgets.WebView : WebKit.WebView {
 
 	public signal void on_ready ();
 

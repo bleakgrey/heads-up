@@ -14,22 +14,20 @@ public class HeadsUp.Window : Gtk.Window {
 	HeaderBar header;
 
 	[GtkChild]
-	Stack stack;
+	Widgets.Stateful stateful;
+	[GtkChild]
+	Hdy.ViewSwitcherBar switcher;
 
-	[GtkChild]
-	Box state;
-	[GtkChild]
-	Image state_image;
-	[GtkChild]
-	Label state_label;
-	[GtkChild]
-	Label state_desc;
-	[GtkChild]
-	Spinner loading;
-	[GtkChild]
-	Box content;
+	public Stack source_stack;
 
-	HeadsUp.WebView webview;
+	construct {
+		source_stack = new Gtk.Stack ();
+		source_stack.vexpand = source_stack.hexpand = true;
+		source_stack.show ();
+		stateful.content.pack_start (source_stack);
+
+		switcher.stack = source_stack;
+	}
 
 	public Window () {
 		Object ();
@@ -50,39 +48,34 @@ public class HeadsUp.Window : Gtk.Window {
 		lang_settings.changed["current"].connect (() => on_lang_changed ());
 		lang_settings.changed["mru-sources"].connect (() => on_lang_changed ());
 
-		webview = new WebView ();
-		webview.on_ready.connect (() => {
-			stack.visible_child = content;
-		});
-		content.add (webview);
-	}
-
-	void update_state (string icon, string label, string desc) {
-		header.title = "";
-		header.subtitle = "";
-		state_image.icon_name = icon;
-		state_label.label = @"<span size=\"xx-large\">$label</span>";
-		state_desc.label = desc;
-		stack.visible_child = state;
+		// webview = new WebView ();
+		// webview.on_ready.connect (() => {
+		// 	state.visible_child = content;
+		// });
+		// content.add (webview);
 	}
 
 	public void empty_state () {
-		update_state ("edit-find-symbolic",
-					_("No text selected"),
-					_("Select something in any window to search for its definition"));
+		stateful.set_status (_("No text selected"),
+							 _("Select something in any window to search for its definition"),
+							 "edit-find-symbolic");
+		header.title = "";
+		header.subtitle = "";
+		switcher.reveal = false;
 	}
 
 	public void look_up (string q) {
 		query = q;
 		header.title = @"\"$query\"";
-		header.subtitle = _("provided by Wikitionary (CC BY-SA 3.0)");
+		//header.subtitle = _("provided by Wikitionary (CC BY-SA 3.0)");
+		switcher.reveal = true;
 		on_lang_changed ();
 	}
 
-	void reload_webview () {
-		stack.visible_child = loading;
-		webview.load_uri (@"https://$lang.wiktionary.org/w/index.php?printable=yes&redirects=1&title=$query");
-	}
+	// void reload_webview () {
+	// 	state.visible_child = loading;
+	// 	webview.load_uri (@"https://$lang.wiktionary.org/w/index.php?printable=yes&redirects=1&title=$query");
+	// }
 
 	void on_theme_changed () {
 		var theme = settings.gtk_theme_name;
@@ -110,7 +103,7 @@ public class HeadsUp.Window : Gtk.Window {
 		while (iter.next ("(ss)", out mgr, out source)) {
 			if (i == current && query != null) {
 				lang = patch_lang_source (source);
-				reload_webview ();
+				// reload_webview ();
 			}
 			i++;
 		}

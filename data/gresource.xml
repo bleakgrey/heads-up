@@ -2,6 +2,7 @@
 <gresources>
     <gresource prefix="/">
         <file>window.ui</file>
+        <file>stateful.ui</file>
         <file>theme_mixin.css</file>
         <file>webview.css</file>
     </gresource>
