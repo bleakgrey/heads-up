@@ -1,0 +1,51 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.bleakgrey.headsup package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.bleakgrey.headsup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-05 14:00+0300\n"
+"PO-Revision-Date: 2021-08-25 17:19+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: data/launcher.desktop.in:4 data/launcher.desktop.in:6
+msgid "Define Selection"
+msgstr "Betekenis van selectie opzoeken"
+
+#: data/launcher.desktop.in:5
+msgid "Define currently selected text in any window"
+msgstr "Zoek de betekenis van selectie uit een venster op"
+
+#: data/launcher.desktop.in:9
+msgid "edit-find-symbolic"
+msgstr "edit-find-symbolic"
+
+#: data/launcher.desktop.in:12
+msgid "Define;Selection;Selected;Text;Highlighted;Word;"
+msgstr "Opzoeken;Definitie;Selectie;Geselecteerd;Tekst;Markeren;Woord;Taal;"
+
+#: data/com.example.appdata.xml.in:45
+msgid "{{name}}"
+msgstr "{{name}}"
+
+#: src/Window.vala:71
+msgid "No text selected"
+msgstr "Geen tekst geselecteerd"
+
+#: src/Window.vala:72
+msgid "Select something in any window to search for its definition"
+msgstr "Selecteer tekst in een venster om de betekenis ervan op te zoeken"
+
+#: src/Window.vala:78
+msgid "provided by Wikitionary (CC BY-SA 3.0)"
+msgstr "aangeleverd door Wikitionary (CC BY-SA 3.0)"
